@@ -15,22 +15,11 @@ class ConceptosController extends Controller
         $concept->concepto = $request->concepto;
         $concept->referencia = $request->referencia;
         $texto = $request->input('name');
-        $primeraLetra = strtoupper(Str::substr($texto,0,1));
-        $concept->indice=$primeraLetra;
+        $primeraLetra = strtoupper(Str::substr($texto, 0, 1));
+        $concept->indice = $primeraLetra;
         $concept->save();
         return response()->json(['message' => 'Concepto creado con exito :D goku le gana', 'estado' => 'ok']);
     }
-
-    public function update(Request $request, $id)
-    {
-        $concept = Conceptos::findOrFail($id);
-        $concept->name = $request->name;
-        $concept->concepto = $request->concepto;
-        $concept->referencia = $request->referencia;
-        $concept->save();
-        return response()->json(['message' => 'Concepto actualizado con exito :D goku le gana', 'estado' => 'ok']);
-    }
-
     public function delete($id)
     {
         try {
@@ -43,5 +32,9 @@ class ConceptosController extends Controller
         }
     }
 
-
+    public function index()
+    {
+        $concepts = Conceptos::orderBy('indice')->get();
+        return response()->json(['message' => 'Conceptos obtenidos con éxito', 'conceptos' => $concepts, 'estado' => 'ok'], 200);
+    }
 }

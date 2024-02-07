@@ -17,17 +17,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::post('/register',[ConceptosController::class, 'register']);
-Route::put('/update',[ConceptosController::class,'update']);
-Route::delete('/delete/{id}',[ConceptosController::class,'delete']);
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::post('/registerConcept',[ConceptosController::class, 'register']);
+Route::delete('/deleteConcept/{id}',[ConceptosController::class,'delete']);
+Route::get('/index',[ConceptosController::class,'index']);
+
 Route::post('/login', [UserController::class, 'login']);
 Route::post('/register', [UserController::class, 'register']);
 Route::middleware('auth:sanctum')->group(function (){
-    Route::get('/logout', [UserController::class, 'logout']);    
+    Route::get('/logout', [UserController::class, 'logout']);
 });
