@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ConceptosController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -14,6 +15,11 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+
+
+Route::post('/register',[ConceptosController::class, 'register']);
+Route::put('/update',[ConceptosController::class,'update']);
+Route::delete('/delete/{id}',[ConceptosController::class,'delete']);
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
