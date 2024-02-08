@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import router from '@/router';
 import axios from 'axios';
 export default {
     data() {
@@ -22,17 +23,24 @@ export default {
             password: ''
         };
     },
-    methods: {
+    mounted() {
+        if (!localStorage.getItem('isLogged')) {
+            router.push('/')
+        }
+    }
+    , methods: {
         login() {
             axios.post(`${this.$ruta.value}/login`, {
                 email: this.email,
                 password: this.password,
-                
+
             })
                 .then(response => {
                     console.log(response.data);
-                    this.$token.value=response.data.accessToken;
-                    localStorage.setItem('isLogged',true);
+                    this.$token.value = response.data.accessToken;
+                    localStorage.setItem('Token', response.data.accessToken);
+                    localStorage.setItem('isLogged', true);
+                    router.push('/');
                 })
                 .catch(error => {
                     console.error(error);
