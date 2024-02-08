@@ -34,7 +34,7 @@ class ConceptosController extends Controller
 
     public function index()
     {
-        $concepts = Conceptos::orderBy('indice')->get();
+        $concepts = Conceptos::orderBy('name')->get();
         return response()->json(['message' => 'Conceptos obtenidos con éxito', 'conceptos' => $concepts, 'estado' => 'ok'], 200);
     }
 }
