@@ -1,5 +1,15 @@
-import { createApp } from 'vue'
+import { createApp,reactive } from 'vue'
 import App from './App.vue'
 import router from './router'
 
-createApp(App).use(router).mount('#app')
+
+const app =createApp(App).use(router);
+
+app.config.globalProperties.$ruta = reactive({ value: 'http://127.0.0.1:8000/api' });
+if(!localStorage.getItem('isLogged')){
+    app.config.globalProperties.$token = reactive({ value: 'null' });
+}else{
+    app.config.globalProperties.$token = reactive({ value: localStorage.getItem('token') });
+}
+
+app.mount('#app');
