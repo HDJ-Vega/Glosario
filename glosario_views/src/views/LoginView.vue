@@ -39,7 +39,7 @@ export default {
                     console.log(response.data);
                     this.$token.value = response.data.accessToken;
                     localStorage.setItem('Token', response.data.accessToken);
-                    localStorage.setItem('isLogged', true);
+                    localStorage.setItem('isLogged', "true");
                     router.push('/');
                 })
                 .catch(error => {

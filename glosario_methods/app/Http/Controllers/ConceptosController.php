@@ -18,7 +18,7 @@ class ConceptosController extends Controller
         $primeraLetra = strtoupper(Str::substr($texto, 0, 1));
         $concept->indice = $primeraLetra;
         $concept->save();
-        return response()->json(['message' => 'Concepto creado con exito :D goku le gana', 'estado' => 'ok']);
+        return response()->json(['message' => 'Concepto creado con exito', 'estado' => 'ok']);
     }
     public function delete($id)
     {

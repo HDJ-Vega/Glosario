@@ -8,7 +8,7 @@ import axios from 'axios';
 
 export default {
     mounted() {
-        if (!localStorage.getItem('isLogged')) {
+        if (localStorage.getItem('isLogged') == "false") {
             router.push('/');
         }
     }
@@ -21,7 +21,7 @@ export default {
             }).then(
                 this.$token.value = 'null',
                 localStorage.setItem('Token', 'null'),
-                localStorage.setItem('isLogged', false),
+                localStorage.setItem('isLogged', "false"),
                 router.push('/')
             ).catch(error => {
                 console.error(error);
