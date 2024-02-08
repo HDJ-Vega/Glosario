@@ -24,7 +24,7 @@ export default {
         };
     },
     mounted() {
-        if (!localStorage.getItem('isLogged')) {
+        if (localStorage.getItem('isLogged')=="true") {
             router.push('/')
         }
     }

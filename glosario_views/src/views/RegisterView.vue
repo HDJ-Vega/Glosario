@@ -29,7 +29,7 @@ export default {
     };
   },
   mounted() {
-    if (localStorage.getItem('isLogged') == 'false') {
+    if (localStorage.getItem('isLogged') == 'true') {
       router.push('/');
     }
   },
