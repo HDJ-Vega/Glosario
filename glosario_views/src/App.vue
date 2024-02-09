@@ -1,8 +1,8 @@
 <template>
   <nav>
-    <router-link to="/">Home</router-link>
-    <router-link v-if="!isLoggedIn" to="/login">Registrar</router-link>
-    <router-link v-if="isLoggedIn" to="/palabras">Registrar</router-link>
+    <router-link to="/">Home</router-link> |
+    <router-link v-if="!isLoggedIn" to="/login">Inicial Sesion</router-link> |
+    <router-link v-if="isLoggedIn" to="/palabras">Agregar</router-link> |
     <router-link v-if="isLoggedIn" to="/logout">Logout</router-link>
     <p v-if="isLoggedIn">Bienvenido, {{ userName }}</p>
     <p v-else>Bienvenido</p>
