@@ -1,26 +1,34 @@
 <template>
-  <router-view />
+  <nav>
+    <router-link to="/">Home</router-link>
+    <router-link v-if="!isLoggedIn" to="/login">Registrar</router-link>
+    <router-link v-if="isLoggedIn" to="/palabras">Registrar</router-link>
+    <router-link v-if="isLoggedIn" to="/logout">Logout</router-link>
+    <p v-if="isLoggedIn">Bienvenido, {{ userName }}</p>
+    <p v-else>Bienvenido</p>
+  </nav>
+  <router-view/>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+<script>
+export default {
+  data() {
+    return {
+      isLoggedIn: localStorage.getItem('isLogged') == "true",
+      userName: localStorage.getItem('userName') || '',
+    };
+  },
+  watch: {
+    '$route': 'checkLoginStatus'
+  },
+  methods: {
+    checkLoginStatus() {
+      this.isLoggedIn = localStorage.getItem('isLogged') == "true";
+      this.userName = localStorage.getItem('user') || '';
+    }
+  },
+  created() {
+    this.checkLoginStatus();
+  }
 }
-
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+</script>

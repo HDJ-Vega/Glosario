@@ -16,5 +16,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/logout', [UserController::class, 'logout']);
     Route::post('/registerConcept', [ConceptosController::class, 'register']);
     Route::delete('/deleteConcept/{id}', [ConceptosController::class, 'delete']);
-    Route::get('/index', [ConceptosController::class, 'index']);
+    // Route::get('/index', [ConceptosController::class, 'index']);
+
 });
+
+// Lo puse asi por la validacion del login
+Route::get('/index', [ConceptosController::class, 'index']);

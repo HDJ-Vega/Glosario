@@ -3,10 +3,13 @@ import Login from "@/views/LoginView.vue"
 import Logout from "@/views/LogoutView.vue"
 import RegisterView from "@/views/RegisterView.vue"
 import Palabras from "@/views/PalabrasView.vue"
+import Conceptos from "@/views/ConceptsView.vue"
+
 const routes = [
   {
     path: '/',
     name: 'home',
+    component: Conceptos,
     
   },
   {
@@ -28,6 +31,11 @@ const routes = [
     path: '/palabras',
     name: 'palabras',
     component:Palabras,
+  },
+  {
+    path: '/conceptos',
+    name: 'conceptos',
+    component:Conceptos,
   }
 ]
 
