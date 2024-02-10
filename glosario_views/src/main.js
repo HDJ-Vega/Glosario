@@ -2,7 +2,6 @@ import { createApp, reactive } from 'vue'
 import App from './App.vue'
 import router from './router'
 
-
 const app = createApp(App).use(router);
 
 app.config.globalProperties.$ruta = reactive({ value: 'http://127.0.0.1:8000/api' });

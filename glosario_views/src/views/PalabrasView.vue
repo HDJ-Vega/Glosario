@@ -1,20 +1,21 @@
 <template>
-    <div class="color-changing-container">
-   <div class="registration-container">
-    <form @submit.prevent="register" ref="registrationForm" class="registration-form">
-      <h2>¡Añade tu Palabra!</h2>
-      <label for="palabra">Palabra clave:</label>
-      <input type="palabra" v-model="palabra" required>
-
-      <label for="concepto">Concepto:</label>
-      <input type="concepto" v-model="concepto" required>
-
-      <label for="referencias">Referencias:</label>
-      <input type="referencias" v-model="referencias" required>
-
-      <button type="submit">Guardar</button>
+  <div class="form-container">
+    <form @submit.prevent="register" ref="registrationForm" class="form">
+      <h2 class="form-title font">¡Añade tu Palabra!</h2>
+      <div class="input-field">
+        <input type="text" v-model="palabra" id="palabra" required @focus="activeField = 'palabra'" @blur="activeField = null">
+        <label class="font-text" for="palabra" :class="{ 'active': activeField === 'palabra' || palabra }">Palabra clave:</label>
+      </div>
+      <div class="input-field">
+        <input type="text" v-model="concepto" id="concepto" required @focus="activeField = 'concepto'" @blur="activeField = null">
+        <label class="font-text" for="concepto" :class="{ 'active': activeField === 'concepto' || concepto }">Concepto:</label>
+      </div>
+      <div class="input-field">
+        <input type="text" v-model="referencias" id="referencias" required @focus="activeField = 'referencias'" @blur="activeField = null">
+        <label class="font-text" for="referencias" :class="{ 'active': activeField === 'referencias' || referencias }">Referencias:</label>
+      </div>
+      <button type="submit" class="submit-button font-text">Guardar</button>
     </form>
-  </div>
   </div>
 </template>
 
@@ -56,7 +57,91 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.font {
+  font-family: "Outfit", sans-serif;
+  font-optical-sizing: auto;
+  font-size: 20px;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.font-text {
+  font-family: "Outfit", sans-serif;
+  font-optical-sizing: auto;
+  font-size: 15px;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url("https://img.freepik.com/vector-gratis/fondo-dia-mundial-libro-dibujado-mano_23-2149334623.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.form {
+  width: 300px;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 2px 6px 2px rgba(60,64,67,0.15);
+  border-radius: 10px;
+}
+
+.form-title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.input-field {
+  position: relative;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #d8d8d8;
+}
+
+.input-field input {
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 10px 0;
+}
+
+.input-field label {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  color: #80868b;
+  transition: all 0.3s;
+}
+
+.input-field label.active {
+  transform: translateY(-150%);
+  font-size: 12px;
+  color: #1a73e8;
+}
+
+.submit-button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #1a73e8;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+  background-color: #185abc;
+}
+</style>
+
+<!-- <style>
 .registration-container {
   display: flex;
   align-items: center;
@@ -140,4 +225,4 @@ color-changing-container {
     background-position: 0% 50%;
   }
 }
-</style>
+</style> -->
